@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ग्रामकार्ट डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक्स हब</title>
+    <title>ग्राम डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक शॉप</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 0; }
-        header { background-color: #2c3e50; color: white; padding: 20px; text-align: center; position: relative; }
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 0; padding-bottom: 70px; }
+        header { background-color: #1b4f72; color: white; padding: 20px; text-align: center; position: relative; }
         
         .menu-icon-container { position: absolute; top: 15px; left: 20px; z-index: 100; }
-        .three-dots-btn { background: #34495e; color: white; border: 2px solid #f1c40f; padding: 8px 12px; font-size: 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .three-dots-btn { background: #154360; color: white; border: 2px solid #f1c40f; padding: 8px 12px; font-size: 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
         .dropdown-menu { display: none; position: absolute; left: 0; top: 45px; background: white; color: #333; min-width: 180px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border-radius: 6px; text-align: left; overflow: hidden; z-index: 101; }
         .dropdown-menu.show { display: block; }
         .dropdown-menu button { width: 100%; background: none; border: none; padding: 12px 15px; text-align: left; font-size: 14px; cursor: pointer; border-bottom: 1px solid #eee; font-weight: bold; color: #2c3e50; }
-        .dropdown-menu button:hover { background: #f1f2f6; color: #27ae60; }
+        .dropdown-menu button:hover { background: #f1f2f6; color: #1b4f72; }
 
-        .direct-wa-container { position: absolute; top: 15px; right: 20px; z-index: 100; }
+        .direct-wa-container { position: absolute; top: 15px; right: 20px; z-index: 100; display: flex; gap: 8px; align-items: center; }
         .direct-wa-btn { background-color: #25D366; color: white; border: 2px solid #ffffff; padding: 8px 12px; font-size: 14px; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+
+        /* हमेशा दिखने वाला फ्लोटिंग कार्ट बटन (नीचे कोने में) */
+        .floating-cart-btn { position: fixed; bottom: 75px; right: 20px; background-color: #e67e22; color: white; border: 3px solid #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 999; text-decoration: none; }
+        .floating-cart-badge { position: absolute; top: -5px; right: -5px; background: #e74c3c; color: white; font-size: 11px; padding: 2px 6px; border-radius: 50%; font-weight: bold; }
+
+        /* नीचे हमेशा दिखने वाला नेविगेशन बार */
+        .bottom-nav-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #1b4f72; border-top: 2px solid #f1c40f; display: flex; justify-content: space-around; align-items: center; padding: 8px 0; z-index: 998; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); }
+        .bottom-nav-item { background: none; border: none; color: white; font-size: 12px; font-weight: bold; display: flex; flex-direction: column; align-items: center; cursor: pointer; gap: 2px; text-decoration: none; }
+        .bottom-nav-item span { font-size: 18px; }
+
+        /* ऊपर मुख्य 3 टैब बार (प्रोडक्ट, पसंद किया हुआ, कार्ट) */
+        .main-top-tabs { display: flex; justify-content: center; background: #2c3e50; padding: 10px; gap: 10px; position: sticky; top: 0; z-index: 90; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .main-tab-btn { background: #34495e; color: white; border: none; padding: 8px 16px; font-size: 14px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .main-tab-btn.active { background: #f39c12; color: #fff; }
 
         .top-feedback-banner { background: #f39c12; color: white; padding: 8px 15px; border-radius: 6px; font-size: 13px; font-weight: bold; display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; cursor: pointer; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .top-feedback-banner:hover { background: #d68910; }
 
         .founder-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 15px; }
-        .founder-img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid #27ae60; background: #fff; }
+        .founder-img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid #f1c40f; background: #fff; }
         .founder-info { text-align: left; }
         .founder-info h3 { margin: 0; font-size: 16px; color: #f1c40f; }
         .founder-info p { margin: 2px 0 0; font-size: 13px; color: #ecf0f1; }
@@ -31,55 +45,65 @@
         .top-action-bar { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
         .action-btn { background-color: #e67e22; color: white; border: none; padding: 10px 18px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; text-decoration: none; }
         .action-btn.services { background-color: #2980b9; }
-        .action-btn.pwa-btn { background-color: #8e44ad; }
-        .action-btn.location-btn { background-color: #27ae60; }
+        .action-btn.pwa-btn { background-color: #27ae60; }
 
-        .info-box { background: #fff8e1; border: 1px solid #ffe0b2; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .info-box { background: #ebf5fb; border: 1px solid #aed6f1; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: none; }
         .info-box.active { display: block; }
         .info-box ul { margin: 0; padding-left: 20px; color: #333; font-size: 14px; line-height: 1.6; }
-        .info-box a { color: #2980b9; text-decoration: none; font-weight: bold; }
 
         .search-container { text-align: center; margin-bottom: 20px; }
-        .search-box { width: 100%; max-width: 500px; padding: 12px; font-size: 16px; border: 2px solid #27ae60; border-radius: 6px; outline: none; }
+        .search-box { width: 100%; max-width: 500px; padding: 12px; font-size: 16px; border: 2px solid #1b4f72; border-radius: 6px; outline: none; }
 
-        .tab-menu { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px; flex-wrap: wrap; }
-        .tab-btn { background-color: #e0e0e0; border: none; padding: 10px 15px; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 5px; }
-        .tab-btn.active { background-color: #27ae60; color: white; }
+        /* कैटगरी टैब (अंदर के 8 टैब) */
+        .tab-menu { display: flex; justify-content: center; gap: 5px; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px; flex-wrap: wrap; }
+        .tab-btn { background-color: #e0e0e0; border: none; padding: 8px 10px; font-size: 12px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        .tab-btn.active { background-color: #1b4f72; color: white; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .product-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
         @media (min-width: 768px) {
             .product-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
 
-        .product-card { border: 1px solid #ddd; padding: 12px; border-radius: 8px; background: #fff; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
-        .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid #eee; background: #f9f9f9; }
+        .product-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: #fff; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; position: relative; }
+        .product-card img { width: 100%; height: 180px; object-fit: contain; border-radius: 6px; border: 1px solid #eee; background: #f9f9f9; }
+
+        /* लाइक / विशलिस्ट बटन */
+        .wishlist-btn { position: absolute; top: 12px; right: 12px; background: #ffffff; border: 1px solid #ccc; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; color: #b0b0b0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .wishlist-btn.liked { color: #e74c3c; border-color: #e74c3c; background: #ffffff; }
+
         .product-info { width: 100%; }
+        .product-info h3 { margin: 0 0 8px; font-size: 16px; color: #333; }
         
-        .yt-link-btn { display: inline-flex; align-items: center; gap: 5px; background-color: #ff0000; color: white; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 4px; text-decoration: none; margin-bottom: 6px; }
-        .yt-link-btn:hover { background-color: #cc0000; }
+        .price-box { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 10px; }
+        .selling-price { color: #1b4f72; font-weight: bold; font-size: 16px; }
+        .mrp-price { color: #999 !important; text-decoration: line-through !important; font-size: 13px !important; font-weight: normal !important; }
+        .discount-badge { background-color: #e74c3c !important; color: white !important; font-size: 10px !important; padding: 2px 6px !important; border-radius: 4px !important; font-weight: bold !important; }
 
-        .product-info h3 { margin: 0 0 6px; font-size: 14px; color: #333; }
-        
-        .price-box { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
-        .selling-price { color: #27ae60; font-weight: bold; font-size: 14px; }
-        .mrp-price { color: #999; text-decoration: line-through; font-size: 12px; font-weight: normal; }
+        .qty-box { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        input[type="number"].qty { width: 60px; padding: 6px; text-align: center; font-weight: bold; font-size: 15px; border: 1px solid #ccc; border-radius: 4px; }
+        .unit-text { font-size: 13px; color: #666; font-weight: bold; }
 
-        .qty-box { display: flex; align-items: center; justify-content: center; gap: 6px; }
-        input[type="number"].qty { width: 55px; padding: 4px; text-align: center; font-weight: bold; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; }
-        .unit-text { font-size: 12px; color: #666; font-weight: bold; }
+        .size-input-wrapper { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 100%; margin-top: 5px; }
+        .size-input-wrapper label { font-size: 11px; font-weight: bold; color: #1b4f72; }
+        input[type="text"].product-size-box { width: 90%; max-width: 200px; padding: 8px; text-align: center; font-size: 13px; border: 1px solid #1b4f72; border-radius: 4px; outline: none; background: #fdfefe; }
 
-        .custom-item-box { background: #e8f8f5; border: 1px solid #a3e4d7; padding: 12px; border-radius: 8px; margin-bottom: 20px; }
-        .custom-item-box h4 { margin-top: 0; color: #117a65; font-size: 15px; margin-bottom: 10px; }
+        .custom-item-box { background: #ebf5fb; border: 1px solid #aed6f1; padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+        .custom-item-box h4 { margin-top: 0; color: #1b4f72; font-size: 15px; margin-bottom: 10px; }
         .custom-row { display: flex; gap: 8px; margin-bottom: 8px; }
         .custom-row input[type="text"] { flex: 2; padding: 6px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; }
         .custom-row input[type="number"] { flex: 1; padding: 6px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; text-align: center; font-weight: bold; }
 
-        .live-cart-bill-box { background: #f8f9fa; border: 2px dashed #27ae60; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .live-cart-bill-box { background: #f8f9fa; border: 2px dashed #1b4f72; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
         .live-cart-bill-box h4 { margin-top: 0; color: #2c3e50; font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 8px; }
-        .bill-items-list { list-style: none; padding: 0; margin: 0 0 10px 0; max-height: 180px; overflow-y: auto; font-size: 14px; color: #333; }
-        .bill-items-list li { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #eee; }
+        
+        .bill-items-list { list-style: none; padding: 0; margin: 0 0 10px 0; max-height: 250px; overflow-y: auto; font-size: 14px; color: #333; }
+        .bill-item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; gap: 10px; }
+        .cart-item-controls { display: flex; align-items: center; gap: 6px; }
+        .cart-qty-btn { background: #1b4f72; color: white; border: none; width: 26px; height: 26px; border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .cart-del-btn { background: #e74c3c; color: white; border: none; width: 26px; height: 26px; border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+
         .bill-summary-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; color: #555; }
         .bill-grand-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; color: #e74c3c; border-top: 2px solid #ccc; padding-top: 8px; margin-top: 8px; }
 
@@ -93,14 +117,14 @@
         .modal-content { background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 650px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px; }
         .modal-buttons button { padding: 8px 15px; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; }
-        .btn-save { background: #27ae60; color: white; }
+        .btn-save { background: #1b4f72; color: white; }
         .btn-close { background: #e74c3c; color: white; }
 
         .input-field { width: 100%; padding: 10px; margin: 5px 0 15px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
         .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
         .form-group { flex: 1; min-width: 200px; }
         .btn { background-color: #25D366; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
-        .delivery-rules { background: #e8f8f5; border: 1px solid #a3e4d7; padding: 12px 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #0e6655; line-height: 1.6; }
+        .delivery-rules { background: #ebf5fb; border: 1px solid #aed6f1; padding: 12px 15px; border-radius: 6px; margin-top: 15px; font-size: 13px; color: #1b4f72; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -117,25 +141,25 @@
     </div>
 
     <div class="direct-wa-container">
-        <a href="https://wa.me/919546125299?text=नमस्ते%20ग्राम%20का%20डिजिटल%20इलेक्ट्रिक%20एंड%20इलेक्ट्रॉनिक्स%20हब,%20मुझे%20सहायता%20चाहिए।" target="_blank" class="direct-wa-btn">
-            💬 व्हाट्सएप चैट
+        <a href="https://wa.me/919546125299?text=नमस्ते%20ग्राम%20डिजिटल%20इलेक्ट्रिक%20शॉप,%20मुझे%20सहायता%20चाहिए।" target="_blank" class="direct-wa-btn">
+            💬 व्हाट्सएप
         </a>
     </div>
 
-    <div style="width: 110px; height: 110px; background: linear-gradient(135deg, #27ae60, #1e8449); border-radius: 26px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,0,0,0.3); border: 3px solid #f1c40f; margin: 0 auto 15px auto;">
-        <span style="color: #ffffff; font-size: 42px; font-weight: bold; line-height: 1;">DE</span>
-        <span style="color: #f1c40f; font-size: 11px; font-weight: bold; margin-top: 4px;">इलेक्ट्रॉनिक्स हब</span>
+    <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #1b4f72, #154360); border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(0,0,0,0.3); border: 3px solid #f1c40f; margin: 0 auto 10px auto;">
+        <span style="color: #ffffff; font-size: 28px; font-weight: bold; line-height: 1;">EL</span>
+        <span style="color: #f1c40f; font-size: 9px; font-weight: bold; margin-top: 4px;">इलेक्ट्रिक हब</span>
     </div>
 
-    <h1>ग्राम का डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक्स हब</h1>
-    <p>इलेक्ट्रिक और इलेक्ट्रॉनिक्स सामान ऑनलाइन ऑर्डर करें</p>
+    <h1>ग्राम डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक शॉप</h1>
+    <p>घर की वायरिंग, लाइटिंग, पंखे, कूलर और सभी प्रकार के इलेक्ट्रिक पार्ट्स</p>
 
-    <a href="https://wa.me/919546125299?text=⭐%20ग्राम%20का%20डिजिटल%20इलेक्ट्रिक%20एंड%20इलेक्ट्रॉनिक्स%20हब%20फीडबैक:%0Aहमारी%20सेवाएं%20आपको%20कैसी%20लगीं?%20कृपया%20अपनी%20कीमती%20राय%20यहाँ%20लिखें:" target="_blank" class="top-feedback-banner">
-        ⭐ हमारी वेबसाइट पर विजिट करने के लिए धन्यवाद! अपना फीडबैक जरूर दें 💬
+    <a href="https://wa.me/919546125299?text=⭐%20ग्राम%20डिजिटल%20इलेक्ट्रिक%20शॉप%20फीडबैक:%0Aहमारी%20सेवाएं%20कैसी%20लगीं?" target="_blank" class="top-feedback-banner">
+        ⭐ अपनी कीमती राय और फीडबैक जरूर दें 💬
     </a>
     
     <div class="founder-container">
-        <img src="https://i.ibb.co/68v8L5X/Screenshot-2026-07-31-10-41-36-96.jpg" alt="रुपेश कुमार साह" class="founder-img" onerror="this.src='https://via.placeholder.com/65?text=Rupesh'">
+        <img src="https://i.ibb.co/68v8L5X/Screenshot-2026-07-31-10-41-36-96.jpg" alt="संस्थापक" class="founder-img" onerror="this.src='https://via.placeholder.com/65?text=Owner'">
         <div class="founder-info">
             <h3>रुपेश कुमार साह</h3>
             <p>संस्थापक एवं निदेशक</p>
@@ -143,120 +167,173 @@
     </div>
 </header>
 
-<div class="container">
-    <div class="top-action-bar">
-        <button class="action-btn" onclick="toggleSection('noticeBox')">📢 आवश्यक सूचना</button>
-        <button class="action-btn services" onclick="toggleSection('servicesBox')">🔗 अन्य सेवाएं व लिंक्स</button>
-        <button class="action-btn location-btn" onclick="toggleSection('locationBox')">📍 लाइव लोकेशन कैसे भेजें?</button>
-        <button class="action-btn pwa-btn" onclick="toggleSection('installBox')">📲 होम स्क्रीन पर ऐप जोड़ें</button>
-    </div>
+<!-- ऊपर मुख्य 3 टैब (प्रोडक्ट, पसंद किया हुआ, कार्ट) -->
+<div class="main-top-tabs">
+    <button class="main-tab-btn active" onclick="switchMainTab('products')">🛍️ प्रोडक्ट्स</button>
+    <button class="main-tab-btn" onclick="switchMainTab('wishlist')">❤️ पसंद किया हुआ (<span id="wishlistCount">0</span>)</button>
+    <button class="main-tab-btn" onclick="switchMainTab('cart')">🛒 कार्ट व बिल</button>
+</div>
 
-    <div id="aboutBox" class="info-box"><h3>ℹ️ हमारे बारे में:</h3><p>ग्राम का डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक्स हब ग्रामीण इलाकों में इलेक्ट्रिक और इलेक्ट्रॉनिक्स सामान पहुँचाने का डिजिटल माध्यम है।</p></div>
-    <div id="contactBox" class="info-box"><h3>📞 संपर्क करें:</h3><p>संस्थापक: रुपेश कुमार साह | व्हाट्सएप: 9546125299</p></div>
-    <div id="termsBox" class="info-box"><h3>📜 नियम व शर्तें:</h3><p>बाजार के उतार-चढ़ाव के अनुसार मूल्य मान्य होगा।</p></div>
-    <div id="noticeBox" class="info-box"><ul id="dynamicNoticeList"><li>स्टोर खुलने का समय: सुबह 7:00 से रात्रि 9:00 बजे तक।</li></ul></div>
-    <div id="servicesBox" class="info-box" style="background: #eaf2f8; border-color: #aed6f1;"><ul id="dynamicLinksList"><li>1. 🛒 <a href="#">अन्य ग्रामीण सेवाएं</a></li></ul></div>
-    <div id="locationBox" class="info-box"><h3>📍 लोकेशन भेजने का तरीका:</h3><ul><li>WhatsApp पर Share Live Location चुनें।</li></ul></div>
-    <div id="installBox" class="info-box"><h3>📲 ऐप कैसे जोड़ें?</h3><ul><li>Add to Home Screen चुनें।</li></ul></div>
+<!-- हमेशा नीचे कोने में दिखने वाला फ्लोटिंग कार्ट बटन -->
+<a href="#liveBillItems" class="floating-cart-btn" onclick="switchMainTab('cart')">
+    🛒
+    <span class="floating-cart-badge" id="floatingCartCount">0</span>
+</a>
 
-    <div class="search-container">
-        <input type="text" id="searchBox" class="search-box" placeholder="🔍 यहाँ सामान का नाम खोजें..." onkeyup="searchProducts()">
-    </div>
+<!-- नीचे हमेशा दिखने वाला नेविगेशन बार -->
+<div class="bottom-nav-bar">
+    <button class="bottom-nav-item" onclick="switchMainTab('products'); openTabDirect('tab1')"><span>💡</span>लाइटिंग</button>
+    <button class="bottom-nav-item" onclick="switchMainTab('products'); openTabDirect('tab2')"><span>🔌</span>वायरिंग</button>
+    <button class="bottom-nav-item" onclick="switchMainTab('products'); openTabDirect('tab5')"><span>🌀</span>पंखे</button>
+    <button class="bottom-nav-item" onclick="switchMainTab('wishlist')"><span>❤️</span>विशलिस्ट</button>
+    <button class="bottom-nav-item" onclick="toggleBottomMenuModal()"><span>☰</span>अन्य कैटगरी</button>
+</div>
 
-    <!-- 6 टैब मेनू -->
-    <div class="tab-menu">
-        <button class="tab-btn active" onclick="openTab(event, 'tab1')">🔌 1. वायरिंग</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab2')">💡 2. लाइटनिंग</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab3')">🌀 3. फैन्स</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab4')">🍳 4. किचन</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab5')">📱 5. मोबाइल्स</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab6')">🔌 6. अप्लायंसेज</button>
-    </div>
-
-    <div id="tab1" class="tab-content active"><h2>वायरिंग (Wiring)</h2><div class="product-grid" id="grid1"></div></div>
-    <div id="tab2" class="tab-content"><h2>लाइटनिंग (Lighting)</h2><div class="product-grid" id="grid2"></div></div>
-    <div id="tab3" class="tab-content"><h2>फैन्स (Fans)</h2><div class="product-grid" id="grid3"></div></div>
-    <div id="tab4" class="tab-content"><h2>किचन (Kitchen)</h2><div class="product-grid" id="grid4"></div></div>
-    <div id="tab5" class="tab-content"><h2>मोबाइल्स (Mobiles)</h2><div class="product-grid" id="grid5"></div></div>
-    <div id="tab6" class="tab-content"><h2>अप्लायंसेज (Appliances)</h2><div class="product-grid" id="grid6"></div></div>
-
-    <div class="custom-item-box">
-        <h4>⚡ अन्य छोटे सामान खुद जोड़ें:</h4>
-        <div class="custom-row">
-            <input type="text" id="customName1" placeholder="सामान का नाम" oninput="calcTotal()">
-            <input type="number" id="customPrice1" placeholder="मूल्य (₹)" min="0" oninput="calcTotal()">
+<!-- नीचे वाले थ्री-डॉट या मेनू बटन पर क्लिक होने पर सभी 8 कैटगरी खोलने का मॉडल -->
+<div id="bottomMenuModal" class="modal">
+    <div class="modal-content" style="max-width: 320px; text-align: center;">
+        <h3 style="color: #1b4f72; margin-top: 0;">⚡ सभी इलेक्ट्रिक कैटगरी</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+            <button class="tab-btn active" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab1', '💡 1. लाइटिंग')">💡 1. लाइटिंग</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab2', '🔌 2. वायरिंग मटेरियल')">🔌 2. वायरिंग मटेरियल</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab3', '⚡ 3. पावर उपकरण')">⚡ 3. पावर उपकरण</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab4', '🍳 4. रसोई अप्लायंसेज')">🍳 4. रसोई अप्लायंसेज</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab5', '🌀 5. पंखे व कूलर')">🌀 5. पंखे व कूलर</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab6', '📱 6. मोबाइल एसेसरीज')">📱 6. मोबाइल एसेसरीज</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab7', '🔋 7. बड़े उपकरण')">🔋 7. बड़े उपकरण</button>
+            <button class="tab-btn" style="padding:10px; font-size:14px;" onclick="selectCategoryFromModal('tab8', '🛠️ 8. स्पेयर पार्ट्स')">🛠️ 8. स्पेयर पार्ट्स</button>
         </div>
-        <div class="custom-row">
-            <input type="text" id="customName2" placeholder="सामान का नाम" oninput="calcTotal()">
-            <input type="number" id="customPrice2" placeholder="मूल्य (₹)" min="0" oninput="calcTotal()">
-        </div>
-        <div class="custom-row">
-            <input type="text" id="customName3" placeholder="सामान का नाम" oninput="calcTotal()">
-            <input type="number" id="customPrice3" placeholder="मूल्य (₹)" min="0" oninput="calcTotal()">
-        </div>
-    </div>
-
-    <div class="live-cart-bill-box">
-        <h4>🛒 आपका लाइव कार्ट बिल (Live Cart Bill)</h4>
-        <ul id="liveBillItems" class="bill-items-list">
-            <li style="color: #7f8c8d; justify-content: center;">अभी कोई सामान नहीं चुना गया है</li>
-        </ul>
-        <div class="bill-summary-row"><span>सामान का कुल मूल्य:</span><span id="billSubtotal">₹0</span></div>
-        <div class="bill-summary-row"><span>डिलीवरी चार्ज:</span><span id="billDeliveryFee">फ्री (₹0)</span></div>
-        <div class="bill-grand-total"><span>कुल देय राशि:</span><span id="billGrandTotal">₹0</span></div>
+        <button class="btn-close" onclick="closeModal('bottomMenuModal')" style="margin-top: 15px; width:100%; padding: 8px;">बंद करें</button>
     </div>
 </div>
 
-<div class="container" style="margin-top: -10px;">
-    <h3>ग्राहक विवरण (डिलीवरी पता)</h3>
-    <div class="form-row">
-        <div class="form-group"><label>ग्राहक का नाम:</label><input type="text" id="custName" class="input-field" placeholder="पूरा नाम" oninput="saveUserData()"></div>
-        <div class="form-group"><label>मोबाइल नंबर:</label><input type="tel" id="custPhone" class="input-field" placeholder="मोबाइल नंबर" oninput="saveUserData()"></div>
-    </div>
-    <div class="form-row">
-        <div class="form-group"><label>गांव / मोहल्ला:</label><input type="text" id="custVillage" class="input-field" placeholder="गांव" oninput="saveUserData()"></div>
-        <div class="form-group"><label>वार्ड नंबर:</label><input type="text" id="custWard" class="input-field" placeholder="वार्ड" oninput="saveUserData()"></div>
-    </div>
-    <label>लैंडमार्क:</label><input type="text" id="custLandmark" class="input-field" placeholder="मंदिर या स्कूल के पास" oninput="saveUserData()">
-    
-    <label>अन्य कोई सामान जो ऐप पर उपलब्ध न हो:</label>
-    <textarea id="extraItems" class="input-field" rows="3" placeholder="यहाँ लिखकर बताएं..."></textarea>
-
-    <div class="feedback-section-box">
-        <h4>💬 हमारी सेवा आपको कैसी लगी? (फीडबैक दें)</h4>
-        <div class="feedback-buttons-row">
-            <button type="button" class="fb-btn" onclick="selectFeedback('बहुत बढ़िया 🔥')">बहुत बढ़िया 🔥</button>
-            <button type="button" class="fb-btn" onclick="selectFeedback('ठीक है 👍')">ठीक है 👍</button>
-            <button type="button" class="fb-btn" onclick="selectFeedback('सुधार करें ⚠️')">सुधार करें ⚠️</button>
+<!-- मुख्य सेक्शन: प्रोडक्ट्स -->
+<div id="sectionProducts" class="main-section-content">
+    <div class="container">
+        <div class="top-action-bar">
+            <button class="action-btn" onclick="toggleSection('noticeBox')">📢 आवश्यक सूचना</button>
+            <button class="action-btn services" onclick="toggleSection('servicesBox')">🔗 अन्य सेवाएं व लिंक्स</button>
+            <button class="action-btn pwa-btn" onclick="toggleSection('installBox')">📲 होम स्क्रीन पर ऐप जोड़ें</button>
         </div>
-        <input type="text" id="feedbackText" class="input-field" placeholder="या यहाँ लिखकर अपना विचार बताएं..." style="margin-bottom: 0; font-size: 13px;">
+
+        <div id="aboutBox" class="info-box"><h3>ℹ️ हमारे बारे में:</h3><p>ग्राम डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक शॉप आपके गाँव तक बेहतरीन क्वालिटी के इलेक्ट्रिक सामान और उपकरण उचित दामों पर उपलब्ध कराती है।</p></div>
+        <div id="contactBox" class="info-box"><h3>📞 संपर्क करें:</h3><p>संस्थापक: रुपेश कुमार साह | व्हाट्सएप: 9546125299</p></div>
+        <div id="termsBox" class="info-box"><h3>📜 नियम व शर्तें:</h3><p>इलेक्ट्रिक सामानों की वारंटी कंपनी के नियमानुसार मान्य होगी।</p></div>
+        <div id="noticeBox" class="info-box"><ul id="dynamicNoticeList"><li>स्टोर खुलने का समय: सुबह 7:00 से रात्रि 9:00 बजे तक।</li></ul></div>
+        <div id="servicesBox" class="info-box" style="background: #eaf2f8; border-color: #aed6f1;"><ul id="dynamicLinksList"><li>1. 🛒 <a href="#">अन्य ग्रामीण डिजिटल सेवाएं</a></li></ul></div>
+        <div id="installBox" class="info-box"><h3>📲 ऐप कैसे जोड़ें?</h3><ul><li>Add to Home Screen चुनें।</li></ul></div>
+
+        <div class="search-container">
+            <input type="text" id="searchBox" class="search-box" placeholder="🔍 यहाँ इलेक्ट्रिक सामान का नाम खोजें..." onkeyup="searchProducts()">
+        </div>
+
+        <!-- 8 टैब मेनू -->
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">💡 1. लाइटिंग</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">🔌 2. वायरिंग</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">⚡ 3. पावर</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab4')">🍳 4. रसोई</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab5')">🌀 5. पंखे</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab6')">📱 6. मोबाइल</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab7')">🔋 7. बड़े उपकरण</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab8')">🛠️ 8. स्पेयर</button>
+        </div>
+
+        <div id="tab1" class="tab-content active"><h2>लाइटिंग (LED बल्ब, ट्यूबलाइट, झालर)</h2><div class="product-grid" id="grid1"></div></div>
+        <div id="tab2" class="tab-content"><h2>वायरिंग मटेरियल (वायर, स्विच, सॉकेट, होल्डर)</h2><div class="product-grid" id="grid2"></div></div>
+        <div id="tab3" class="tab-content"><h2>पावर उपकरण (MCB, स्टेबलाइजर, एक्सटेंशन बोर्ड)</h2><div class="product-grid" id="grid3"></div></div>
+        <div id="tab4" class="tab-content"><h2>रसोई अप्लायंसेज (इंडक्शन, मिक्सी, हीटर)</h2><div class="product-grid" id="grid4"></div></div>
+        <div id="tab5" class="tab-content"><h2>पंखे व कूलर पार्ट्स (सीलिंग फैन, एग्जॉस्ट)</h2><div class="product-grid" id="grid5"></div></div>
+        <div id="tab6" class="tab-content"><h2>मोबाइल एसेसरीज (चार्जर, डाटा केबल, ईयरफोन)</h2><div class="product-grid" id="grid6"></div></div>
+        <div id="tab7" class="tab-content"><h2>बड़े उपकरण व इन्वर्टर बैटरी</h2><div class="product-grid" id="grid7"></div></div>
+        <div id="tab8" class="tab-content"><h2>अन्य स्पेयर पार्ट्स व टूल्स</h2><div class="product-grid" id="grid8"></div></div>
     </div>
+</div>
 
-    <label style="background: #fef9e7; border: 1px solid #f9e79f; padding: 10px 12px; border-radius: 6px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
-        <input type="checkbox" id="urgentDelivery" onchange="calcTotal()" style="width:18px; height:18px;"> <span>⚡ मुझे तत्काल डिलीवरी चाहिए (+₹10)</span>
-    </label>
+<!-- मुख्य सेक्शन: विशलिस्ट (पसंद किया हुआ प्रोडक्ट) -->
+<div id="sectionWishlist" class="main-section-content" style="display: none;">
+    <div class="container">
+        <h2>❤️ आपके पसंदीदा प्रोडक्ट्स (Wishlist)</h2>
+        <p style="color: #666; font-size: 14px;">यहाँ आपके द्वारा लाइक किए गए सभी सामान दिखाई देंगे:</p>
+        <div class="product-grid" id="wishlistGrid"></div>
+    </div>
+</div>
 
-    <button class="btn" onclick="sendToWhatsApp()">व्हाट्सएप पर ऑर्डर भेजें 📲</button>
-    
-    <div class="delivery-rules" id="dynamicDeliveryRulesDisplay">
-        <strong>🚚 डिलीवरी नियम:</strong><br>
-        • सभी सामान्य होम डिलीवरी: <strong>बिल्कुल फ्री (फ्री डिलीवरी)</strong><br>
-        • तत्काल डिलीवरी (Urgent Delivery): <strong>मात्र ₹10 अतिरिक्त चार्ज</strong>
+<!-- मुख्य सेक्शन: कार्ट व बिलिंग -->
+<div id="sectionCart" class="main-section-content" style="display: none;">
+    <div class="container">
+        <div class="custom-item-box">
+            <h4>⚡ अन्य कोई सामान खुद जोड़ें:</h4>
+            <div class="custom-row">
+                <input type="text" id="customName1" placeholder="सामान का नाम व विवरण" oninput="calcTotal()">
+                <input type="number" id="customPrice1" placeholder="मूल्य (₹)" min="0" oninput="calcTotal()">
+            </div>
+            <div class="custom-row">
+                <input type="text" id="customName2" placeholder="सामान का नाम व विवरण" oninput="calcTotal()">
+                <input type="number" id="customPrice2" placeholder="मूल्य (₹)" min="0" oninput="calcTotal()">
+            </div>
+        </div>
+
+        <div class="live-cart-bill-box" id="liveBillBoxContainer">
+            <h4>🛒 आपका लाइव कार्ट बिल (यहाँ से मात्रा घटाएं या हटाएं)</h4>
+            <ul id="liveBillItems" class="bill-items-list">
+                <li style="color: #7f8c8d; justify-content: center;">अभी कोई सामान नहीं चुना गया है</li>
+            </ul>
+            <div class="bill-summary-row"><span>सामान का कुल मूल्य:</span><span id="billSubtotal">₹0</span></div>
+            <div class="bill-summary-row"><span>डिलीवरी चार्ज:</span><span id="billDeliveryFee">फ्री (₹0)</span></div>
+            <div class="bill-grand-total"><span>कुल देय राशि:</span><span id="billGrandTotal">₹0</span></div>
+        </div>
+
+        <h3>ग्राहक विवरण (डिलीवरी पता)</h3>
+        <div class="form-row">
+            <div class="form-group"><label>ग्राहक का नाम:</label><input type="text" id="custName" class="input-field" placeholder="पूरा नाम" oninput="saveUserData()"></div>
+            <div class="form-group"><label>मोबाइल नंबर:</label><input type="tel" id="custPhone" class="input-field" placeholder="मोबाइल नंबर" oninput="saveUserData()"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>गांव / मोहल्ला:</label><input type="text" id="custVillage" class="input-field" placeholder="गांव" oninput="saveUserData()"></div>
+            <div class="form-group"><label>वार्ड नंबर:</label><input type="text" id="custWard" class="input-field" placeholder="वार्ड" oninput="saveUserData()"></div>
+        </div>
+        <label>लैंडमार्क:</label><input type="text" id="custLandmark" class="input-field" placeholder="मंदिर या स्कूल के पास" oninput="saveUserData()">
+        
+        <label>अन्य कोई विशेष विवरण (कंपनी या मॉडल):</label>
+        <textarea id="extraItems" class="input-field" rows="3" placeholder="यहाँ लिखकर बताएं..."></textarea>
+
+        <div class="feedback-section-box">
+            <h4>💬 हमारी सेवा आपको कैसी लगी? (फीडबैक दें)</h4>
+            <div class="feedback-buttons-row">
+                <button type="button" class="fb-btn" onclick="selectFeedback('बहुत बढ़िया 🔥')">बहुत बढ़िया 🔥</button>
+                <button type="button" class="fb-btn" onclick="selectFeedback('ठीक है 👍')">ठीक है 👍</button>
+                <button type="button" class="fb-btn" onclick="selectFeedback('सुधार करें ⚠️')">सुधार करें ⚠️</button>
+            </div>
+            <input type="text" id="feedbackText" class="input-field" placeholder="या यहाँ लिखकर अपना विचार बताएं..." style="margin-bottom: 0; font-size: 13px;">
+        </div>
+
+        <label style="background: #fef9e7; border: 1px solid #f9e79f; padding: 10px 12px; border-radius: 6px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+            <input type="checkbox" id="urgentDelivery" onchange="calcTotal()" style="width:18px; height:18px;"> <span>⚡ मुझे तत्काल होम डिलीवरी चाहिए (+₹10)</span>
+        </label>
+
+        <button class="btn" onclick="sendToWhatsApp()">व्हाट्सएप पर ऑर्डर भेजें 📲</button>
+        
+        <div class="delivery-rules" id="dynamicDeliveryRulesDisplay">
+            <strong>🚚 डिलीवरी नियम:</strong><br>
+            • सभी सामान्य होम डिलीवरी: <strong>बिल्कुल फ्री (फ्री डिलीवरी)</strong><br>
+            • तत्काल डिलीवरी (Urgent Delivery): <strong>मात्र ₹10 अतिरिक्त चार्ज</strong>
+        </div>
     </div>
 </div>
 
 <!-- एडमिन पैनल मॉडल -->
 <div id="rateEditorModal" class="modal">
     <div class="modal-content" style="max-height: 85vh; overflow-y: auto;">
-        <h3>🛠️ एडमिन पैनल (सामान, MRP, फोटो, YouTube लिंक और नियम बदलें)</h3>
+        <h3>🛠️ एडमिन पैनल (सामान, MRP, फोटो और नियम बदलें)</h3>
         
-        <h4 style="color: #d35400; margin: 10px 0 5px 0;">📢 निर्देश बदलें:</h4>
+        <h4 style="color: #1b4f72; margin: 10px 0 5px 0;">📢 निर्देश बदलें:</h4>
         <textarea id="editNoticeText" rows="2" style="width:100%; padding:8px;"></textarea>
         
         <h4 style="color: #2980b9; margin: 10px 0 5px 0;">🔗 अन्य सेवाएं व लिंक्स बदलें:</h4>
         <textarea id="editLinksText" rows="2" style="width:100%; padding:8px;"></textarea>
 
-        <h4 style="color: #117a65; margin: 10px 0 5px 0;">🚚 डिलीवरी नियम यहाँ बदलें:</h4>
+        <h4 style="color: #1b4f72; margin: 10px 0 5px 0;">🚚 डिलीवरी नियम यहाँ बदलें:</h4>
         <textarea id="editDeliveryRulesText" rows="3" style="width:100%; padding:8px; font-size:13px;"></textarea>
 
         <div id="editRateContainer"></div>
@@ -282,26 +359,27 @@
 </div>
 
 <script>
-    // Google Apps Script URL
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbweY_welW8gLdUH8NRwfIpg8C35uJZB8si2AL_xwhkKDQ2BCjfL873P0vBf9mY3o3fD/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwaIuJYygR7mi4zK77Z7EOUfBDV6P8AZRA1tBA3x2U5CD5stOBhrJSGbXQ3ipT83GhWQA/exec";
 
-    let defaultData = [{name: "कॉपर वायर (90M Roll)", mrp: 1500, price: 1400, unit: "pkt", img: "", yt: ""}];
+    let dLight = JSON.parse(localStorage.getItem('el_light')) || [{name: "LED बल्ब 9 Watt (उषा/हैवेल्स)", mrp: 120, price: 90, unit: "पीस", img: "", yt: ""}];
+    let dWire = JSON.parse(localStorage.getItem('el_wire')) || [{name: "कॉपर वायर बंडल (1mm)", mrp: 950, price: 850, unit: "बंडल", img: "", yt: ""}];
+    let dPower = JSON.parse(localStorage.getItem('el_power')) || [{name: "MCB सिंगल पोल 16A", mrp: 250, price: 200, unit: "पीस", img: "", yt: ""}];
+    let dKitchen = JSON.parse(localStorage.getItem('el_kitchen')) || [{name: "इलेक्ट्रिक केतली 1.5L", mrp: 899, price: 699, unit: "पीस", img: "", yt: ""}];
+    let dFans = JSON.parse(localStorage.getItem('el_fans')) || [{name: "हाई स्पीड सीलिंग फैन", mrp: 1800, price: 1450, unit: "पीस", img: "", yt: ""}];
+    let dMobile = JSON.parse(localStorage.getItem('el_mobile')) || [{name: "फास्ट चार्जर अडैप्टर (Type-C)", mrp: 350, price: 250, unit: "पीस", img: "", yt: ""}];
+    let dLarge = JSON.parse(localStorage.getItem('el_large')) || [{name: "ऑटोमैटिक स्टेबलाइजर 5000V", mrp: 3200, price: 2700, unit: "पीस", img: "", yt: ""}];
+    let dSpares = JSON.parse(localStorage.getItem('el_spares')) || [{name: "इलेक्ट्रिक टेप व स्क्रू सेट", mrp: 50, price: 35, unit: "पैकेट", img: "", yt: ""}];
 
-    let data1 = JSON.parse(localStorage.getItem('gc_v2_data1')) || defaultData;
-    let data2 = JSON.parse(localStorage.getItem('gc_v2_data2')) || defaultData;
-    let data3 = JSON.parse(localStorage.getItem('gc_v2_data3')) || defaultData;
-    let data4 = JSON.parse(localStorage.getItem('gc_v2_data4')) || defaultData;
-    let data5 = JSON.parse(localStorage.getItem('gc_v2_data5')) || defaultData;
-    let data6 = JSON.parse(localStorage.getItem('gc_v2_data6')) || defaultData;
-
+    let wishlist = JSON.parse(localStorage.getItem('el_wishlist')) || [];
     let selectedFeedbackRating = "";
 
-    if(localStorage.getItem('gramcart_notice_html')) document.getElementById('dynamicNoticeList').innerHTML = localStorage.getItem('gramcart_notice_html');
-    if(localStorage.getItem('gramcart_links_html')) document.getElementById('dynamicLinksList').innerHTML = localStorage.getItem('gramcart_links_html');
-    if(localStorage.getItem('gramcart_rules_html')) document.getElementById('dynamicDeliveryRulesDisplay').innerHTML = localStorage.getItem('gramcart_rules_html');
+    if(localStorage.getItem('el_notice_html')) document.getElementById('dynamicNoticeList').innerHTML = localStorage.getItem('el_notice_html');
+    if(localStorage.getItem('el_links_html')) document.getElementById('dynamicLinksList').innerHTML = localStorage.getItem('el_links_html');
+    if(localStorage.getItem('el_rules_html')) document.getElementById('dynamicDeliveryRulesDisplay').innerHTML = localStorage.getItem('el_rules_html');
 
     window.onload = function() { 
         renderProducts(); 
+        renderWishlist();
         loadUserData(); 
         calcTotal(); 
         fetchDataFromGoogleSheet(); 
@@ -312,20 +390,53 @@
         fetch(APPS_SCRIPT_URL)
             .then(response => response.json())
             .then(data => {
-                if(data && data.success) {
-                    if(data.sheetData1 && data.sheetData1.length > 0) { data1 = data.sheetData1; localStorage.setItem('gc_v2_data1', JSON.stringify(data1)); }
-                    if(data.sheetData2 && data.sheetData2.length > 0) { data2 = data.sheetData2; localStorage.setItem('gc_v2_data2', JSON.stringify(data2)); }
-                    if(data.sheetData3 && data.sheetData3.length > 0) { data3 = data.sheetData3; localStorage.setItem('gc_v2_data3', JSON.stringify(data3)); }
-                    if(data.sheetData4 && data.sheetData4.length > 0) { data4 = data.sheetData4; localStorage.setItem('gc_v2_data4', JSON.stringify(data4)); }
-                    if(data.sheetData5 && data.sheetData5.length > 0) { data5 = data.sheetData5; localStorage.setItem('gc_v2_data5', JSON.stringify(data5)); }
-                    if(data.sheetData6 && data.sheetData6.length > 0) { data6 = data.sheetData6; localStorage.setItem('gc_v2_data6', JSON.stringify(data6)); }
+                if(data) {
+                    if(data.light) { dLight = data.light; localStorage.setItem('el_light', JSON.stringify(dLight)); }
+                    if(data.wire) { dWire = data.wire; localStorage.setItem('el_wire', JSON.stringify(dWire)); }
+                    if(data.power) { dPower = data.power; localStorage.setItem('el_power', JSON.stringify(dPower)); }
+                    if(data.kitchen) { dKitchen = data.kitchen; localStorage.setItem('el_kitchen', JSON.stringify(dKitchen)); }
+                    if(data.fans) { dFans = data.fans; localStorage.setItem('el_fans', JSON.stringify(dFans)); }
+                    if(data.mobile) { dMobile = data.mobile; localStorage.setItem('el_mobile', JSON.stringify(dMobile)); }
+                    if(data.large) { dLarge = data.large; localStorage.setItem('el_large', JSON.stringify(dLarge)); }
+                    if(data.spares) { dSpares = data.spares; localStorage.setItem('el_spares', JSON.stringify(dSpares)); }
                     renderProducts();
+                    renderWishlist();
                 }
             })
-            .catch(err => console.log("Google Sheet sync offline mode active. Using local data."));
+            .catch(err => console.log("Google Sheet offline mode active."));
     }
 
     function toggleDropdown() { document.getElementById('dropdownMenu').classList.toggle('show'); }
+    function toggleBottomMenuModal() { document.getElementById('bottomMenuModal').style.display = 'flex'; }
+    
+    function selectCategoryFromModal(tabId, title) {
+        closeModal('bottomMenuModal');
+        switchMainTab('products');
+        openTabDirect(tabId);
+    }
+
+    function openTabDirect(tabId) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        document.querySelectorAll('.tab-menu .tab-btn').forEach(btn => {
+            if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
+        });
+    }
+
+    function switchMainTab(tabName) {
+        document.getElementById('sectionProducts').style.display = (tabName === 'products') ? 'block' : 'none';
+        document.getElementById('sectionWishlist').style.display = (tabName === 'wishlist') ? 'block' : 'none';
+        document.getElementById('sectionCart').style.display = (tabName === 'cart') ? 'block' : 'none';
+
+        document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
+        if(tabName === 'products') document.querySelectorAll('.main-tab-btn')[0].classList.add('active');
+        if(tabName === 'wishlist') document.querySelectorAll('.main-tab-btn')[1].classList.add('active');
+        if(tabName === 'cart') document.querySelectorAll('.main-tab-btn')[2].classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function toggleSection(id) {
         let box = document.getElementById(id);
         if (box.classList.contains('active')) { box.classList.remove('active'); }
@@ -346,7 +457,7 @@
             closeModal('adminLoginModal');
             openRateEditor();
         } else {
-            alert("गलत पासवर्ड! कृपया सही पासवर्ड दर्ज करें।");
+            alert("गलत पासवर्ड!");
             document.getElementById('adminPasswordInput').value = "";
             document.getElementById('adminPasswordInput').focus();
         }
@@ -358,6 +469,42 @@
         event.currentTarget.classList.add('active');
     }
 
+    function toggleWishlist(name, price, unit, mrp, img, yt) {
+        let index = wishlist.findIndex(item => item.name === name);
+        if(index > -1) {
+            wishlist.splice(index, 1);
+        } else {
+            wishlist.push({name, price, unit, mrp, img, yt});
+        }
+        localStorage.setItem('el_wishlist', JSON.stringify(wishlist));
+        renderProducts();
+        renderWishlist();
+    }
+
+    function renderWishlist() {
+        document.getElementById('wishlistCount').innerText = wishlist.length;
+        let h = "";
+        if(wishlist.length === 0) {
+            h = `<p style="text-align: center; color: #7f8c8d; grid-column: 1/-1;">अभी तक कोई प्रोडक्ट पसंद (Like) नहीं किया गया है।</p>`;
+        } else {
+            wishlist.forEach((it, i) => {
+                let mrpHtml = it.mrp && it.mrp > it.price ? `<span class="mrp-price">₹${it.mrp}</span>` : '';
+                h += `<div class="product-card">
+                    <button class="wishlist-btn liked" onclick="toggleWishlist('${it.name}', ${it.price}, '${it.unit}', ${it.mrp||0}, '${it.img||''}', '${it.yt||''}')">❤️</button>
+                    <img src="${it.img}" onerror="this.src='https://via.placeholder.com/300?text=Electric+Item'">
+                    <div class="product-info">
+                        <h3>${it.name}</h3>
+                        <div class="price-box">
+                            ${mrpHtml}
+                            <span class="selling-price">₹${it.price} / ${it.unit}</span>
+                        </div>
+                    </div>
+                </div>`;
+            });
+        }
+        document.getElementById('wishlistGrid').innerHTML = h;
+    }
+
     function openRateEditor() {
         document.getElementById('editNoticeText').value = document.getElementById('dynamicNoticeList').innerHTML.trim();
         document.getElementById('editLinksText').value = document.getElementById('dynamicLinksList').innerHTML.trim();
@@ -365,25 +512,27 @@
         
         let container = document.getElementById('editRateContainer'), html = "";
         let cats = [
-            {title: "1. वायरिंग", list: data1, key: 'gc_v2_data1'}, 
-            {title: "2. लाइटनिंग", list: data2, key: 'gc_v2_data2'}, 
-            {title: "3. फैन्स", list: data3, key: 'gc_v2_data3'}, 
-            {title: "4. किचन", list: data4, key: 'gc_v2_data4'}, 
-            {title: "5. मोबाइल्स", list: data5, key: 'gc_v2_data5'},
-            {title: "6. अप्लायंसेज", list: data6, key: 'gc_v2_data6'}
+            {title: "1. लाइटिंग", list: dLight, key: 'el_light'}, 
+            {title: "2. वायरिंग", list: dWire, key: 'el_wire'}, 
+            {title: "3. पावर", list: dPower, key: 'el_power'}, 
+            {title: "4. रसोई", list: dKitchen, key: 'el_kitchen'}, 
+            {title: "5. पंखे", list: dFans, key: 'el_fans'},
+            {title: "6. मोबाइल", list: dMobile, key: 'el_mobile'},
+            {title: "7. बड़े उपकरण", list: dLarge, key: 'el_large'},
+            {title: "8. स्पेयर पार्ट्स", list: dSpares, key: 'el_spares'}
         ];
 
         cats.forEach((cat, ci) => {
             html += `<div style="background:#f9f9f9; padding:10px; margin-top:10px; border-radius:6px; border:1px solid #ddd;">`;
-            html += `<h4 style="color:#27ae60; margin:0 0 5px;">${cat.title} <span style="font-size:11px; color:#666;">(नाम | सेल | MRP | यूनिट | फोटो लिंक | YouTube लिंक)</span></h4>`;
+            html += `<h4 style="color:#1b4f72; margin:0 0 5px;">${cat.title}</h4>`;
             cat.list.forEach((it, ii) => {
                 html += `<div style="display:flex; gap:4px; margin-bottom:5px; flex-wrap:wrap;">
-                    <input type="text" value="${it.name}" id="en_${ci}_${ii}" style="flex:2; min-width:100px; padding:4px;" placeholder="नाम">
-                    <input type="number" value="${it.price}" id="ep_${ci}_${ii}" style="flex:1; min-width:50px; padding:4px;" placeholder="सेल प्राइस">
-                    <input type="number" value="${it.mrp || ''}" id="emrp_${ci}_${ii}" style="flex:1; min-width:50px; padding:4px;" placeholder="MRP">
-                    <input type="text" value="${it.unit}" id="eu_${ci}_${ii}" style="flex:1; min-width:40px; padding:4px;" placeholder="यूनिट">
-                    <input type="text" value="${it.img||''}" id="ei_${ci}_${ii}" placeholder="Image URL" style="flex:2; min-width:100px; padding:4px;">
-                    <input type="text" value="${it.yt||''}" id="eyt_${ci}_${ii}" placeholder="YouTube Link" style="flex:2; min-width:100px; padding:4px;">
+                    <input type="text" value="${it.name}" id="en_${ci}_${ii}" style="flex:2; min-width:90px; padding:4px;" placeholder="नाम">
+                    <input type="number" value="${it.mrp || ''}" id="emrp_${ci}_${ii}" style="flex:1; min-width:45px; padding:4px;" placeholder="MRP">
+                    <input type="number" value="${it.price}" id="ep_${ci}_${ii}" style="flex:1; min-width:45px; padding:4px;" placeholder="सेल">
+                    <input type="text" value="${it.unit}" id="eu_${ci}_${ii}" style="flex:1; min-width:35px; padding:4px;" placeholder="यूनिट">
+                    <input type="text" value="${it.img||''}" id="ei_${ci}_${ii}" placeholder="Image URL" style="flex:2; min-width:80px; padding:4px;">
+                    <input type="text" value="${it.yt||''}" id="eyt_${ci}_${ii}" placeholder="Video URL" style="flex:2; min-width:80px; padding:4px;">
                 </div>`;
             });
             html += `</div>`;
@@ -394,31 +543,28 @@
 
     function saveAdminData() {
         let nNotice = document.getElementById('editNoticeText').value;
-        localStorage.setItem('gramcart_notice_html', nNotice);
+        localStorage.setItem('el_notice_html', nNotice);
         document.getElementById('dynamicNoticeList').innerHTML = nNotice;
 
         let nLinks = document.getElementById('editLinksText').value;
-        localStorage.setItem('gramcart_links_html', nLinks);
+        localStorage.setItem('el_links_html', nLinks);
         document.getElementById('dynamicLinksList').innerHTML = nLinks;
 
         let nRules = document.getElementById('editDeliveryRulesText').value;
-        localStorage.setItem('gramcart_rules_html', nRules);
+        localStorage.setItem('el_rules_html', nRules);
         document.getElementById('dynamicDeliveryRulesDisplay').innerHTML = nRules;
 
         let cats = [
-            {list: data1, key: 'gc_v2_data1'}, 
-            {list: data2, key: 'gc_v2_data2'}, 
-            {list: data3, key: 'gc_v2_data3'}, 
-            {list: data4, key: 'gc_v2_data4'}, 
-            {list: data5, key: 'gc_v2_data5'},
-            {list: data6, key: 'gc_v2_data6'}
+            {list: dLight, key: 'el_light'}, {list: dWire, key: 'el_wire'}, {list: dPower, key: 'el_power'}, 
+            {list: dKitchen, key: 'el_kitchen'}, {list: dFans, key: 'el_fans'}, {list: dMobile, key: 'el_mobile'},
+            {list: dLarge, key: 'el_large'}, {list: dSpares, key: 'el_spares'}
         ];
         
         cats.forEach((cat, ci) => {
             cat.list.forEach((it, ii) => {
                 it.name = document.getElementById(`en_${ci}_${ii}`).value;
-                it.price = parseFloat(document.getElementById(`ep_${ci}_${ii}`).value) || 0;
                 it.mrp = parseFloat(document.getElementById(`emrp_${ci}_${ii}`).value) || 0;
+                it.price = parseFloat(document.getElementById(`ep_${ci}_${ii}`).value) || 0;
                 it.unit = document.getElementById(`eu_${ci}_${ii}`).value;
                 it.img = document.getElementById(`ei_${ci}_${ii}`).value;
                 it.yt = document.getElementById(`eyt_${ci}_${ii}`).value;
@@ -433,48 +579,73 @@
     }
 
     function saveUserData() {
-        localStorage.setItem('gramcart_name', document.getElementById('custName').value);
-        localStorage.setItem('gramcart_phone', document.getElementById('custPhone').value);
-        localStorage.setItem('gramcart_village', document.getElementById('custVillage').value);
-        localStorage.setItem('gramcart_ward', document.getElementById('custWard').value);
-        localStorage.setItem('gramcart_landmark', document.getElementById('custLandmark').value);
+        localStorage.setItem('el_name', document.getElementById('custName').value);
+        localStorage.setItem('el_phone', document.getElementById('custPhone').value);
+        localStorage.setItem('el_village', document.getElementById('custVillage').value);
+        localStorage.setItem('el_ward', document.getElementById('custWard').value);
+        localStorage.setItem('el_landmark', document.getElementById('custLandmark').value);
     }
     
     function loadUserData() {
-        if(localStorage.getItem('gramcart_name')) document.getElementById('custName').value = localStorage.getItem('gramcart_name');
-        if(localStorage.getItem('gramcart_phone')) document.getElementById('custPhone').value = localStorage.getItem('gramcart_phone');
-        if(localStorage.getItem('gramcart_village')) document.getElementById('custVillage').value = localStorage.getItem('gramcart_village');
-        if(localStorage.getItem('gramcart_ward')) document.getElementById('custWard').value = localStorage.getItem('gramcart_ward');
-        if(localStorage.getItem('gramcart_landmark')) document.getElementById('custLandmark').value = localStorage.getItem('gramcart_landmark');
+        if(localStorage.getItem('el_name')) document.getElementById('custName').value = localStorage.getItem('el_name');
+        if(localStorage.getItem('el_phone')) document.getElementById('custPhone').value = localStorage.getItem('el_phone');
+        if(localStorage.getItem('el_village')) document.getElementById('custVillage').value = localStorage.getItem('el_village');
+        if(localStorage.getItem('el_ward')) document.getElementById('custWard').value = localStorage.getItem('el_ward');
+        if(localStorage.getItem('el_landmark')) document.getElementById('custLandmark').value = localStorage.getItem('el_landmark');
     }
 
     function renderProducts() {
-        renderGrid('grid1', data1, 'c1'); 
-        renderGrid('grid2', data2, 'c2'); 
-        renderGrid('grid3', data3, 'c3');
-        renderGrid('grid4', data4, 'c4'); 
-        renderGrid('grid5', data5, 'c5'); 
-        renderGrid('grid6', data6, 'c6'); 
+        renderGrid('grid1', dLight, 'c1'); 
+        renderGrid('grid2', dWire, 'c2'); 
+        renderGrid('grid3', dPower, 'c3');
+        renderGrid('grid4', dKitchen, 'c4'); 
+        renderGrid('grid5', dFans, 'c5'); 
+        renderGrid('grid6', dMobile, 'c6'); 
+        renderGrid('grid7', dLarge, 'c7'); 
+        renderGrid('grid8', dSpares, 'c8'); 
     }
 
     function renderGrid(cid, list, pre) {
         let h = "";
         list.forEach((it, i) => {
-            let mrpHtml = it.mrp && it.mrp > it.price ? `<span class="mrp-price">₹${it.mrp}</span>` : '';
-            let ytBtnHtml = it.yt && String(it.yt).trim() !== "" ? `<a href="${it.yt}" target="_blank" class="yt-link-btn">▶️ यूट्यूब पर वीडियो देखें</a><br>` : '';
-            
+            let isLiked = wishlist.some(w => w.name === it.name);
+            let likeClass = isLiked ? "wishlist-btn liked" : "wishlist-btn";
+
+            let mrpHtml = '';
+            if (it.mrp && it.mrp > it.price) {
+                let discountAmount = it.mrp - it.price;
+                mrpHtml = `<div style="margin-bottom:4px;">
+                            <span class="mrp-price">₹${it.mrp}</span>
+                            <span class="discount-badge">₹${discountAmount} की छूट</span>
+                           </div>`;
+            }
+
+            let socialBtn = '';
+            if (it.yt && it.yt.trim() !== '') {
+                socialBtn = `<div style="margin-top: 6px;">
+                                <a href="${it.yt}" target="_blank" style="background: #ff0000; color: white; padding: 4px 10px; font-size: 11px; border-radius: 4px; text-decoration: none; font-weight: bold; display: inline-block;">
+                                    ▶ वीडियो / डेमो देखें
+                                </a>
+                               </div>`;
+            }
+
             h += `<div class="product-card">
-                <img src="${it.img}" onerror="this.src='https://via.placeholder.com/150?text=Item'">
+                <button class="${likeClass}" onclick="toggleWishlist('${it.name}', ${it.price}, '${it.unit}', ${it.mrp||0}, '${it.img||''}', '${it.yt||''}')">❤️</button>
+                <img src="${it.img}" onerror="this.src='https://via.placeholder.com/300?text=Electric+Item'">
                 <div class="product-info">
-                    ${ytBtnHtml}
                     <h3>${it.name}</h3>
                     <div class="price-box">
-                        <span class="selling-price">₹${it.price} / ${it.unit}</span>
                         ${mrpHtml}
+                        <span class="selling-price">₹${it.price} / ${it.unit}</span>
                     </div>
-                    <div class="qty-box">
+                    ${socialBtn}
+                    <div class="qty-box" style="margin-top: 8px;">
                         <input type="number" id="${pre}_${i}" class="qty" value="0" min="0" step="any" oninput="calcTotal()" data-price="${it.price}" data-name="${it.name}" data-unit="${it.unit}">
                         <span class="unit-text">${it.unit}</span>
+                        <div class="size-input-wrapper">
+                            <label>ब्रांड या मॉडल इस बॉक्स में लिखें</label>
+                            <input type="text" id="${pre}_size_${i}" class="product-size-box" placeholder="उदा: Usha, 9W" oninput="calcTotal()">
+                        </div>
                     </div>
                 </div>
             </div>`;
@@ -497,31 +668,67 @@
         });
     }
 
+    // कार्ट में क्वांटिटी घटाने/बढ़ाने या हटाने के लिए विशेष फंक्शन
+    function changeCartQty(inputId, changeVal) {
+        let inp = document.getElementById(inputId);
+        if(inp) {
+            let curVal = parseFloat(inp.value) || 0;
+            let newVal = curVal + changeVal;
+            if(newVal < 0) newVal = 0;
+            inp.value = newVal;
+            calcTotal();
+        }
+    }
+
     function calcTotal() {
-        let total = 0, bill = "", has = false;
+        let total = 0, bill = "", has = false, countItems = 0;
         
-        document.querySelectorAll('.qty').forEach(inp => {
+        document.querySelectorAll('.qty').forEach((inp) => {
             let q = parseFloat(inp.value) || 0;
             if(q > 0) {
                 has = true; 
-                let c = Math.round((q * parseFloat(inp.getAttribute('data-price'))) * 100) / 100;
+                countItems += q;
+                let price = parseFloat(inp.getAttribute('data-price'));
+                let c = Math.round((q * price) * 100) / 100;
                 total += c; 
-                bill += `<li><span>${inp.getAttribute('data-name')} (${q} ${inp.getAttribute('data-unit')})</span> <strong>₹${c}</strong></li>`;
+
+                let prefixId = inp.id.split('_')[0];
+                let itemIndex = inp.id.split('_')[1];
+                let sizeBox = document.getElementById(`${prefixId}_size_${itemIndex}`);
+                let sizeText = sizeBox && sizeBox.value.trim() !== "" ? ` [विवरण: ${sizeBox.value.trim()}]` : "";
+
+                // कार्ट बिल में हर आइटम के साथ (+, -, 🗑️) बटन जोड़े गए हैं
+                bill += `<li class="bill-item-row">
+                    <span>${inp.getAttribute('data-name')}${sizeText} (${q} ${inp.getAttribute('data-unit')})<br><strong style="color: #1b4f72;">₹${c}</strong></span>
+                    <div class="cart-item-controls">
+                        <button class="cart-qty-btn" onclick="changeCartQty('${inp.id}', -1)">-</button>
+                        <span style="font-weight: bold; min-width: 20px; text-align: center;">${q}</span>
+                        <button class="cart-qty-btn" onclick="changeCartQty('${inp.id}', 1)">+</button>
+                        <button class="cart-del-btn" onclick="changeCartQty('${inp.id}', -${q})" title="हटाएं">🗑️</button>
+                    </div>
+                </li>`;
             }
         });
 
-        for(let i = 1; i <= 3; i++) {
+        for(let i = 1; i <= 2; i++) {
             let nameInput = document.getElementById(`customName${i}`).value.trim();
             let priceInput = parseFloat(document.getElementById(`customPrice${i}`).value) || 0;
             if(nameInput !== "" && priceInput > 0) {
                 has = true;
+                countItems += 1;
                 total += priceInput;
-                bill += `<li><span>${nameInput}</span> <strong>₹${priceInput}</strong></li>`;
+                bill += `<li class="bill-item-row">
+                    <span>${nameInput}<br><strong style="color: #1b4f72;">₹${priceInput}</strong></span>
+                    <div class="cart-item-controls">
+                        <button class="cart-del-btn" onclick="document.getElementById('customName${i}').value=''; document.getElementById('customPrice${i}').value=''; calcTotal();" title="हटाएं">🗑️</button>
+                    </div>
+                </li>`;
             }
         }
 
-        if(!has) bill = `<li style="color: #7f8c8d; justify-content: center;">अभी कोई सामान नहीं चुना गया है</li>`;
+        if(!has) bill = `<li style="color: #7f8c8d; justify-content: center; padding: 15px 0;">अभी कोई सामान नहीं चुना गया है</li>`;
         document.getElementById('liveBillItems').innerHTML = bill;
+        document.getElementById('floatingCartCount').innerText = countItems;
         
         let urg = document.getElementById('urgentDelivery').checked ? 10 : 0;
         document.getElementById('billSubtotal').innerText = "₹" + total;
@@ -535,20 +742,26 @@
             vil = document.getElementById('custVillage').value.trim();
         if(!name || !vil || !phone) { alert("कृपया नाम, मोबाइल और गांव भरें!"); return; }
         
-        let msg = `नमस्ते ग्राम का डिजिटल इलेक्ट्रिक एंड इलेक्ट्रॉनिक्स हब, आर्डर:%0A`, total = 0;
+        let msg = `नमस्ते ग्राम डिजिटल इलेक्ट्रिक शॉप, नया ऑर्डर:%0A`, total = 0;
         
-        document.querySelectorAll('.qty').forEach(inp => {
+        document.querySelectorAll('.qty').forEach((inp) => {
             let q = parseFloat(inp.value) || 0;
             if(q > 0) {
                 let c = q * parseFloat(inp.getAttribute('data-price')); 
                 total += c;
-                msg += `- ${inp.getAttribute('data-name')}: ${q} ${inp.getAttribute('data-unit')} (₹${c})%0A`;
+
+                let prefixId = inp.id.split('_')[0];
+                let itemIndex = inp.id.split('_')[1];
+                let sizeBox = document.getElementById(`${prefixId}_size_${itemIndex}`);
+                let sizeText = sizeBox && sizeBox.value.trim() !== "" ? ` [विवरण: ${sizeBox.value.trim()}]` : "";
+
+                msg += `- ${inp.getAttribute('data-name')}${sizeText}: ${q} ${inp.getAttribute('data-unit')} (₹${c})%0A`;
             }
         });
 
-        for(let i = 1; i <= 3; i++) {
+        for(let i = 1; i <= 2; i++) {
             let nameInput = document.getElementById(`customName${i}`).value.trim();
-            let priceInput = parseFloat(document.getElementById(`customPrice${i}`).value) || 0;
+            let priceInput = parseFloat(document.getElementById('customPrice' + i).value) || 0;
             if(nameInput !== "" && priceInput > 0) {
                 total += priceInput;
                 msg += `- ${nameInput}: ₹${priceInput}%0A`;
@@ -557,7 +770,7 @@
         
         let extra = document.getElementById('extraItems').value.trim();
         if(extra !== "") {
-            msg += `%0A*अन्य सामान:* %0A${extra}%0A`;
+            msg += `%0A*विशेष विवरण:* %0A${extra}%0A`;
         }
 
         let fbText = document.getElementById('feedbackText').value.trim();
